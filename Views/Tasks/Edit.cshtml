@@ -1,0 +1,12 @@
+﻿@model TaskManager.Models.TaskModel
+
+<h2>Edit Task</h2>
+
+<form asp-action="Edit">
+    <input type="hidden" asp-for="Id" />
+    <input asp-for="TaskTitle" /><br />
+    <input asp-for="TaskStatus" /><br />
+    <textarea asp-for="TaskRemarks"></textarea><br />
+    <input asp-for="LastUpdatedBy" placeholder="Updated By" /><br />
+    <button type="submit">Update</button>
+</form>

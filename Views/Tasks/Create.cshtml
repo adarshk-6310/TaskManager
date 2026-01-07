@@ -1,0 +1,12 @@
+﻿@model TaskManager.Models.TaskModel
+
+<h2>Create Task</h2>
+
+<form asp-action="Create">
+    <input asp-for="TaskTitle" placeholder="Title" /><br />
+    <textarea asp-for="TaskDescription"></textarea><br />
+    <input asp-for="TaskDueDate" type="date" /><br />
+    <input asp-for="TaskStatus" placeholder="Status" /><br />
+    <input asp-for="CreatedBy" placeholder="Created By" /><br />
+    <button type="submit">Save</button>
+</form>
