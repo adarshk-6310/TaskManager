@@ -67,12 +67,13 @@ namespace TaskManager.Controllers
             return View(await _context.Tasks.FindAsync(id));
         }
 
-        public async Task<IActionResult> Delete(int id)
-        {
-            return View(await _context.Tasks.FindAsync(id));
-        }
+        //public async Task<IActionResult> Deletew(int id)
+        //{
+        //    //return View(await _context.Tasks.FindAsync(id)); 
+        //    return View("Index", await _context.Tasks.FindAsync(id));
+        //}
 
-        [HttpPost, ActionName("Delete")]
+        [HttpGet, ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var task = await _context.Tasks.FindAsync(id);
