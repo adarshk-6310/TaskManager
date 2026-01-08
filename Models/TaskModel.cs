@@ -13,10 +13,10 @@
 
         public string TaskRemarks { get; set; }
 
-        //public DateTime CreatedOn { get; set; } = DateTime.UtcNow;
-        //public DateTime LastUpdatedOn { get; set; } = DateTime.UtcNow;
-        public DateTime CreatedOn { get; set; }
-        public DateTime LastUpdatedOn { get; set; }
+        public DateTime CreatedOn { get; set; } = DateTime.UtcNow;
+        public DateTime LastUpdatedOn { get; set; } = DateTime.UtcNow;
+        //public DateTime CreatedOn { get; set; }
+        //public DateTime LastUpdatedOn { get; set; }
 
         public string CreatedBy { get; set; }
         public string LastUpdatedBy { get; set; }

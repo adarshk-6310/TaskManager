@@ -1,12 +1,57 @@
 ﻿@model TaskManager.Models.TaskModel
 
-<h2>Edit Task</h2>
+@{
+    ViewData["Title"] = "Edit Task";
+}
 
-<form asp-action="Edit">
+<h2 class="mb-4">Edit Task</h2>
+
+<form asp-action="Edit" method="post" class="card p-4 shadow-sm">
+
     <input type="hidden" asp-for="Id" />
-    <input asp-for="TaskTitle" /><br />
-    <input asp-for="TaskStatus" /><br />
-    <textarea asp-for="TaskRemarks"></textarea><br />
-    <input asp-for="LastUpdatedBy" placeholder="Updated By" /><br />
-    <button type="submit">Update</button>
+
+    <div class="mb-3">
+        <label asp-for="TaskTitle" class="form-label"></label>
+        <input asp-for="TaskTitle" class="form-control" />
+        <span asp-validation-for="TaskTitle" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="TaskStatus" class="form-label"></label>
+        <select asp-for="TaskStatus" class="form-select">
+            <option value="">-- Select Status --</option>
+            <option>Pending</option>
+            <option>In Progress</option>
+            <option>Completed</option>
+        </select>
+        <span asp-validation-for="TaskStatus" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="TaskRemarks" class="form-label"></label>
+        <textarea asp-for="TaskRemarks" class="form-control" rows="3"></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="LastUpdatedBy" class="form-label"></label>
+        <input asp-for="LastUpdatedBy"
+               class="form-control"
+               placeholder="Updated by user"
+               readonly />
+    </div>
+
+    <div class="d-flex gap-2">
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </div>
+    <input asp-for="CreatedBy" type="hidden" id="CreatedById" />
+    <input asp-for="TaskDueDate" type="hidden" id="TaskDueDateId" />
+    <input asp-for="TaskDescription" type="hidden" id="TaskDescriptionId" />
+
 </form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

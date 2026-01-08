@@ -33,6 +33,9 @@ namespace TaskManager.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(TaskModel task)
         {
+            task.CreatedOn = DateTime.SpecifyKind(task.CreatedOn, DateTimeKind.Utc);
+            task.LastUpdatedOn = DateTime.SpecifyKind(task.LastUpdatedOn, DateTimeKind.Utc);
+            task.TaskDueDate = DateTime.SpecifyKind(task.TaskDueDate, DateTimeKind.Utc);
             if (ModelState.IsValid)
             {
                 _context.Add(task);
@@ -52,6 +55,8 @@ namespace TaskManager.Controllers
         public async Task<IActionResult> Edit(TaskModel task)
         {
             task.LastUpdatedOn = DateTime.UtcNow;
+            task.CreatedOn = DateTime.SpecifyKind(task.CreatedOn, DateTimeKind.Utc);
+            task.TaskDueDate = DateTime.SpecifyKind(task.TaskDueDate, DateTimeKind.Utc);
             _context.Update(task);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
